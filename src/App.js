@@ -80,15 +80,18 @@ class App extends Component {
         </p>
         <hr />
         <h3>Questions</h3>
-        {
-          this.state.questions.map((question, index) =>
-            <p key={question.text}>
-              <label htmlFor={"answer" + index}>{question.text}</label>
-              <input id={"answer" + index} type="range" min="1" max="5" step="1" defaultValue="1" onChange={this.updateAnswer} />
-              <span>{question.answer}</span>
-            </p>
-          )
-        }
+        <div>
+          <p><i>1 = Absolutely Untrue; 2 = Mostly Untrue; 3 = Neither True nor Untrue; 4 = Mostly True; 5 = Absolutely True</i></p>
+          {
+            this.state.questions.map((question, index) =>
+              <p key={question.text}>
+                <label htmlFor={"answer" + index}>{question.text}</label>
+                <input id={"answer" + index} type="range" min="1" max="5" step="1" defaultValue="1" onChange={this.updateAnswer} />
+                <span>{question.answer}</span>
+              </p>
+            )
+          }
+        </div>
         <div>
           <hr />
           <h3>Results</h3>
