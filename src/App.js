@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -69,7 +68,7 @@ class App extends Component {
           <h2>The Work and Meaning Inventory</h2>
         </div>
         <p className="App-intro">
-          The Work and Meaning Inventory (WAMI) estimates your feelings of meaning in work. It was created by Dr. Steger. The original PDF may be found <a href="http://www.michaelfsteger.com/wp-content/uploads/2012/08/WAMI.pdf">here</a> and the research summary may be found <a href="http://www.michaelfsteger.com/wp-content/uploads/2012/08/Steger-Dik-Duffy-JCA-in-press.pdf">here</a>.
+          The Work and Meaning Inventory (WAMI) estimates your feelings of meaning in work. It was created by <a href="http://www.michaelfsteger.com/" target="_blank">Dr. Steger</a>. The original PDF may be found <a href="http://www.michaelfsteger.com/wp-content/uploads/2012/08/WAMI.pdf" target="_blank">here</a> and the research summary may be found <a href="http://www.michaelfsteger.com/wp-content/uploads/2012/08/Steger-Dik-Duffy-JCA-in-press.pdf" target="_blank">here</a>.
         </p>
         <h3>Questions</h3>
         {
@@ -93,6 +92,8 @@ class App extends Component {
             </ul>
           </div>
         }
+        <hr />
+        <p><small>Source code at <a href="https://github.com/kevgrig/wami-react" target="_blank">https://github.com/kevgrig/wami-react</a></small></p>
       </div>
     );
   }
