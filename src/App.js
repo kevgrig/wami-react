@@ -5,18 +5,19 @@ class App extends Component {
   constructor(props) {
     super(props);
     
+    // Initialize state
     this.state = {
       questions: [
         { text: "I have found a meaningful career", answer: 1 },
-        { text: "I view my work as contributing to my personal growth.", answer: 1 },
-        { text: "My work really makes no difference to the world.", answer: 1 },
-        { text: "I understand how my work contributes to my life's meaning.", answer: 1 },
-        { text: "I have a good sense of what makes my job meaningful.", answer: 1 },
-        { text: "I know my work makes a positive difference in the world.", answer: 1 },
-        { text: "My work helps me better understand myself.", answer: 1 },
-        { text: "I have discovered work that has a satisfying purpose.", answer: 1 },
-        { text: "My work helps me make sense of the world around me.", answer: 1 },
-        { text: "The work I do serves a greater purpose.", answer: 1 },
+        { text: "I view my work as contributing to my personal growth", answer: 1 },
+        { text: "My work really makes no difference to the world", answer: 1 },
+        { text: "I understand how my work contributes to my life's meaning", answer: 1 },
+        { text: "I have a good sense of what makes my job meaningful", answer: 1 },
+        { text: "I know my work makes a positive difference in the world", answer: 1 },
+        { text: "My work helps me better understand myself", answer: 1 },
+        { text: "I have discovered work that has a satisfying purpose", answer: 1 },
+        { text: "My work helps me make sense of the world around me", answer: 1 },
+        { text: "The work I do serves a greater purpose", answer: 1 },
       ],
       results: {
         positiveMeaning: {
@@ -98,6 +99,15 @@ class App extends Component {
               )
             }
           </ul>
+          { this.state.results.meaningfulWork.result > 0 &&
+            <div>
+              <p><a href={"mailto:?subject=" + encodeURIComponent("Work and Meaning Inventory, " + new Date()) + "&body=" + encodeURIComponent("WAMI Results:\n\n" + (
+                [ "positiveMeaning", "meaningMakingThroughWork", "greaterGoodMotivations", "meaningfulWork" ].map((name) =>
+                  this.state.results[name].name + ": " + this.state.results[name].result + " out of " + this.state.results[name].max + " (" + (((this.state.results[name].result / this.state.results[name].max) * 100).toFixed(2)) + "%)"
+                ).join("\n")
+              ) + "\n\nAnswers:\n\n" + this.state.questions.map((question, index) => question.text + ": " + this.state.questions[index].answer ).join("\n"))}>Email these results.</a></p>
+            </div>
+          }
         </div>
         <hr />
         <p><small>Source code at <a href="https://github.com/kevgrig/wami-react" target="_blank">https://github.com/kevgrig/wami-react</a></small></p>
