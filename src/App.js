@@ -70,6 +70,7 @@ class App extends Component {
         <p className="App-intro">
           The Work and Meaning Inventory (WAMI) estimates your feelings of meaning in work. It was created by <a href="http://www.michaelfsteger.com/" target="_blank">Dr. Steger</a>. The original PDF may be found <a href="http://www.michaelfsteger.com/wp-content/uploads/2012/08/WAMI.pdf" target="_blank">here</a> and the research summary may be found <a href="http://www.michaelfsteger.com/wp-content/uploads/2012/08/Steger-Dik-Duffy-JCA-in-press.pdf" target="_blank">here</a>.
         </p>
+        <hr />
         <h3>Questions</h3>
         {
           this.state.questions.map((question, index) =>
@@ -82,6 +83,7 @@ class App extends Component {
         }
         { //this.state.results.meaningfulWork.result > 0 &&
           <div>
+            <hr />
             <h3>Results</h3>
             <ul>
               {
