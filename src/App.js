@@ -51,13 +51,20 @@ class App extends Component {
   
   updateAnswer(event) {
     var newValue = Number.parseInt(event.target.value, 10);
+    
+    // Extract the question index from the identifier (created in render)
     var answerIndex = event.target.id.slice(6);
+    
     var newState = this.state;
     newState.questions[answerIndex].answer = newValue;
+    
+    // Calculations from http://www.michaelfsteger.com/wp-content/uploads/2012/08/WAMI.pdf
+    // Answers array is 0-indexed so "item 1" from the PDF is index 0 in the questions array
     newState.results.positiveMeaning.result = newState.questions[0].answer + newState.questions[3].answer + newState.questions[4].answer + newState.questions[7].answer;
     newState.results.meaningMakingThroughWork.result = newState.questions[1].answer + newState.questions[6].answer + newState.questions[8].answer;
     newState.results.greaterGoodMotivations.result = 6 - newState.questions[2].answer + newState.questions[5].answer + newState.questions[9].answer;
     newState.results.meaningfulWork.result = newState.results.positiveMeaning.result + newState.results.meaningMakingThroughWork.result + newState.results.greaterGoodMotivations.result;
+    
     this.setState(newState);
   }
   
@@ -81,19 +88,17 @@ class App extends Component {
             </p>
           )
         }
-        { //this.state.results.meaningfulWork.result > 0 &&
-          <div>
-            <hr />
-            <h3>Results</h3>
-            <ul>
-              {
-                [ "positiveMeaning", "meaningMakingThroughWork", "greaterGoodMotivations", "meaningfulWork" ].map((name) =>
-                  <li key={name}><span title={this.state.results[name].text}>{this.state.results[name].name}</span>: <b>{this.state.results[name].result}</b> out of {this.state.results[name].max} ({((this.state.results[name].result / this.state.results[name].max) * 100).toFixed(2)}%)</li>
-                )
-              }
-            </ul>
-          </div>
-        }
+        <div>
+          <hr />
+          <h3>Results</h3>
+          <ul>
+            {
+              [ "positiveMeaning", "meaningMakingThroughWork", "greaterGoodMotivations", "meaningfulWork" ].map((name) =>
+                <li key={name}><span title={this.state.results[name].text}>{this.state.results[name].name}</span>: <b>{this.state.results[name].result}</b> out of {this.state.results[name].max} ({((this.state.results[name].result / this.state.results[name].max) * 100).toFixed(2)}%)</li>
+              )
+            }
+          </ul>
+        </div>
         <hr />
         <p><small>Source code at <a href="https://github.com/kevgrig/wami-react" target="_blank">https://github.com/kevgrig/wami-react</a></small></p>
       </div>
